@@ -10,6 +10,7 @@ public class Balls : MonoBehaviour
     Rigidbody2D ridge;
     public Action<Balls,Balls> OnLevilUp;
     public Action OnGameOver;
+    public Action OnGameWin;
     bool isTouchRedline;
     float timer;
     public int score;
@@ -52,6 +53,10 @@ public class Balls : MonoBehaviour
                 if(ballsNextPrefab!=null)
                 {
                     OnLevilUp?.Invoke(this, fruit);  
+                    if(ballsNextPrefab.name=="Ball_10")
+                    {
+                        OnGameWin?.Invoke();
+                    }
        
                 }
             }           
